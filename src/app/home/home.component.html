@@ -2,6 +2,7 @@
   <Label text="Home"></Label>
 </ActionBar>
 
-<GridLayout>
-  <!-- Add your page content here -->
-</GridLayout>
+<StackLayout rows="50,*,50,*,50">
+  <Button class="-primary" (tap)="callUselessWorker()" text="start worker"></Button>
+  <Label [text]="workerResponse"></Label>
+</StackLayout>

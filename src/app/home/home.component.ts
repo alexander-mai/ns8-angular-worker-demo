@@ -5,11 +5,19 @@ import { Component, OnInit } from '@angular/core'
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
+  readonly worker: Worker;
+  public workerResponse: string;
+
   constructor() {
-    // Use the component constructor to inject providers.
+    this.worker = new Worker("~/workers/useless.worker");
+    this.worker.onmessage = msg => this.workerResponse = msg.data;
   }
 
   ngOnInit(): void {
     // Init your component properties here.
+  }
+
+  callUselessWorker() {
+    this.worker.postMessage(Math.random()*10);
   }
 }
